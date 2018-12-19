@@ -110,7 +110,7 @@ class TocMachine(GraphMachine):
         print("I'm entering help")
 
         sender_id = event['sender']['id']
-        send_text_message(sender_id, "輸入 \"news\" 查看新聞\n輸入 \"FSM\" 查看FSM圖")
+        send_text_message(sender_id, "輸入 \"news\" 查看新聞\n輸入 \"FSM\" 查看FSM圖\n輸入 \"照片\" 查看隨機照片")
         self.go_back()
 
     def on_exit_help(self):

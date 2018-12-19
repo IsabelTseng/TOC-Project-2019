@@ -1,10 +1,47 @@
 # TOC Project 2019
 
-Template Code for TOC Project 2019
-
 A Facebook messenger bot based on a finite state machine
 
-More details in the [Slides](https://hackmd.io/p/SkpBR-Yam#/) and [FAQ](https://hackmd.io/s/B1Xw7E8kN)
+## Finite State Machine
+![fsm](./fsm.png)
+
+## Usage
+The initial state is set to `user`.
+
+Every time `user` state is triggered to `advance` to another state, it will `go_back` to `user` state after the bot replies corresponding message.
+
+* user
+	* 查看使用方式: 
+	    input "help"
+		* Reply: 
+		    輸入 "news" 查看新聞
+            輸入 "FSM" 查看FSM圖
+            輸入 "照片" 查看隨機照片
+            ![](https://i.imgur.com/ArLc67W.png)
+
+	* 查看新聞:
+        input "news"
+		* Reply:
+            ![](https://i.imgur.com/84fZMtx.png)
+            press "Dcard"
+            ![](https://i.imgur.com/1HDtHXM.png)
+            or press "民報"
+            ![](https://i.imgur.com/hjsRqwo.png)
+    * 查看FSM圖:
+            input "fsm" or "FSM"
+        * Reply:
+            ![](https://i.imgur.com/icVREG6.png)
+    * 查看隨機照片:
+            input 照片
+        * Reply:
+            press "羽生結弦"
+            ![](https://i.imgur.com/O0i9zia.png)
+            press "新垣结衣"
+            ![](https://i.imgur.com/6YzCf6W.png) 
+
+
+
+
 
 ## Setup
 
@@ -43,21 +80,7 @@ After that, `ngrok` would generate a https URL.
 python3 app.py
 ```
 
-## Finite State Machine
-![fsm](./img/show-fsm.png)
-
-## Usage
-The initial state is set to `user`.
-
-Every time `user` state is triggered to `advance` to another state, it will `go_back` to `user` state after the bot replies corresponding message.
-
-* user
-	* Input: "go to state1"
-		* Reply: "I'm entering state1"
-
-	* Input: "go to state2"
-		* Reply: "I'm entering state2"
-
 
 ## Reference
-[TOC-Project-2017](https://github.com/Lee-W/TOC-Project-2017) ❤️ [@Lee-W](https://github.com/Lee-W)
+[TOC-Project-2019](https://github.com/winonecheng/TOC-Project-2019) from [winonecheng](https://github.com/winonecheng)
+[TOC-Project-2017](https://github.com/Lee-W/TOC-Project-2017) from [@Lee-W](https://github.com/Lee-W)
