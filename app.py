@@ -11,9 +11,9 @@ machine = TocMachine(
         'help',
         'fsm',
         # 'newRecord',
-        # 'getPhoto',
-        # 'photo1',
-        # 'photo2',
+        'getPhoto',
+        'photo1',
+        'photo2',
         'getNews',
         'dcardPhoto',
         'dcardTitle',
@@ -45,24 +45,24 @@ machine = TocMachine(
         #     'dest': 'newRecord',
         #     'conditions': 'is_going_to_newRecord'
         # },
-        # {
-        #     'trigger': 'advance',
-        #     'source': 'user',
-        #     'dest': 'getPhoto',
-        #     'conditions': 'is_going_to_getPhoto'
-        # },
-        # {
-        #     'trigger': 'advance',
-        #     'source': ['user', 'getPhoto'],
-        #     'dest': 'photo1',
-        #     'conditions': 'is_going_to_photo1'
-        # },
-        # {
-        #     'trigger': 'advance',
-        #     'source': ['user', 'getPhoto'],
-        #     'dest': 'photo2',
-        #     'conditions': 'is_going_to_photo2'
-        # },
+        {
+            'trigger': 'advance',
+            'source': 'user',
+            'dest': 'getPhoto',
+            'conditions': 'is_going_to_getPhoto'
+        },
+        {
+            'trigger': 'advance',
+            'source': ['user', 'getPhoto'],
+            'dest': 'photo1',
+            'conditions': 'is_going_to_photo1'
+        },
+        {
+            'trigger': 'advance',
+            'source': ['user', 'getPhoto'],
+            'dest': 'photo2',
+            'conditions': 'is_going_to_photo2'
+        },
         {
             'trigger': 'advance',
             'source': ['user', 'dcardPhoto', 'news1Photo'],
@@ -101,12 +101,12 @@ machine = TocMachine(
                 'fsm',
                 # 'newRecord',
                 # 'getPhoto',
-                # 'photo1',
-                # 'photo2',
-                'getNews',
-                'dcardPhoto',
+                'photo1',
+                'photo2',
+                # 'getNews',
+                # 'dcardPhoto',
                 'dcardTitle',
-                'news1Photo',
+                # 'news1Photo',
                 'news1Title'
             ],
             'dest': 'user'
