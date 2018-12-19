@@ -24,7 +24,8 @@ Every time `user` state is triggered to `advance` to another state, it will `go_
 		* Reply:
             ![](https://i.imgur.com/84fZMtx.png)
             * press "Dcard"
-            	![](https://i.imgur.com/1HDtHXM.png)
+                ![](https://i.imgur.com/dcjTyaA.png)
+                ![](https://i.imgur.com/M3VCJYb.png)
             * or press "民報"
             	![](https://i.imgur.com/hjsRqwo.png)
     * 查看FSM圖:
