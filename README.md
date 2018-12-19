@@ -11,9 +11,9 @@ The initial state is set to `user`.
 Every time `user` state is triggered to `advance` to another state, it will `go_back` to `user` state after the bot replies corresponding message.
 
 * user
-	* 查看使用方式: 
+	* 查看使用方式:
 	    input "help"
-		* Reply: 
+		* Reply:
 		    輸入 "news" 查看新聞
             輸入 "FSM" 查看FSM圖
             輸入 "照片" 查看隨機照片
@@ -23,10 +23,10 @@ Every time `user` state is triggered to `advance` to another state, it will `go_
         input "news"
 		* Reply:
             ![](https://i.imgur.com/84fZMtx.png)
-            press "Dcard"
-            ![](https://i.imgur.com/1HDtHXM.png)
-            or press "民報"
-            ![](https://i.imgur.com/hjsRqwo.png)
+            * press "Dcard"
+            	![](https://i.imgur.com/1HDtHXM.png)
+            * or press "民報"
+            	![](https://i.imgur.com/hjsRqwo.png)
     * 查看FSM圖:
             input "fsm" or "FSM"
         * Reply:
@@ -34,10 +34,10 @@ Every time `user` state is triggered to `advance` to another state, it will `go_
     * 查看隨機照片:
             input 照片
         * Reply:
-            press "羽生結弦"
-            ![](https://i.imgur.com/O0i9zia.png)
-            press "新垣结衣"
-            ![](https://i.imgur.com/6YzCf6W.png) 
+            * press "羽生結弦"
+            	![](https://i.imgur.com/O0i9zia.png)
+            * press "新垣结衣"
+            	![](https://i.imgur.com/6YzCf6W.png)
 
 
 
