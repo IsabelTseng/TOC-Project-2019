@@ -15,11 +15,12 @@ class TocMachine(GraphMachine):
             **machine_configs
         )
 
-    # def is_going_to_state1(self, event):
-    #     if event.get("message"):
-    #         text = event['message']['text']
-    #         return text.lower() == 'go to state1'
-    #     return False
+    def is_going_to_state1(self, event):
+        # if event.get("message"):
+        #     text = event['message']['text']
+        #     return text.lower() == 'go to state1'
+        # return False
+        return True
 
     def is_going_to_help(self, event):
         if event.get("message"):
@@ -96,24 +97,24 @@ class TocMachine(GraphMachine):
             return text.lower() == '確認'
         return False
 
-    # def on_enter_state1(self, event):
-    #     print("I'm entering state1")
+    def on_enter_state1(self, event):
+        print("I'm entering state1")
 
-    #     sender_id = event['sender']['id']
-    #     responese = send_text_message(sender_id, "I'm entering state1")
-    #     self.go_back()
+        sender_id = event['sender']['id']
+        responese = send_text_message(sender_id, "Hello")
+        self.go_back()
 
-    # def on_exit_state1(self):
-    #     print('Leaving state1')
+    def on_exit_state1(self):
+        print('Leaving state1')
 
     def on_enter_help(self, event):
         print("I'm entering help")
 
         sender_id = event['sender']['id']
         send_text_message(sender_id, "輸入 \"news\" 查看新聞\n輸入 \"FSM\" 查看FSM圖\n輸入 \"照片\" 查看隨機照片")
-        self.go_back()
+        # self.go_back()
 
-    def on_exit_help(self):
+    def on_exit_help(self, event):
         print('Leaving help')
 
     def on_enter_fsm(self, event):

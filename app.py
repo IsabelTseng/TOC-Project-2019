@@ -7,7 +7,7 @@ VERIFY_TOKEN = "1234567890987654321"
 machine = TocMachine(
     states=[
         'user',
-        # 'state1',
+        'state1',
         'help',
         'fsm',
         # 'newRecord',
@@ -21,12 +21,12 @@ machine = TocMachine(
         'news1Title'
     ],
     transitions=[
-        # {
-        #     'trigger': 'advance',
-        #     'source': 'user',
-        #     'dest': 'state1',
-        #     'conditions': 'is_going_to_state1'
-        # },
+        {
+            'trigger': 'advance',
+            'source': 'help',
+            'dest': 'state1',
+            'conditions': 'is_going_to_state1'
+        },
         {
             'trigger': 'advance',
             'source': 'user',
@@ -96,8 +96,8 @@ machine = TocMachine(
         {
             'trigger': 'go_back',
             'source': [
-                # 'state1',
-                'help',
+                'state1',
+                # 'help',
                 'fsm',
                 # 'newRecord',
                 # 'getPhoto',
