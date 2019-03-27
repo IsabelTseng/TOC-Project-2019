@@ -5,6 +5,7 @@ from utils import send_image_url
 from utils import send_button_message
 from getDcard import getTop10Title
 from getNews import getNews1
+import random
 
 
 class TocMachine(GraphMachine):
@@ -14,11 +15,11 @@ class TocMachine(GraphMachine):
             **machine_configs
         )
 
-    def is_going_to_state1(self, event):
-        if event.get("message"):
-            text = event['message']['text']
-            return text.lower() == 'go to state1'
-        return False
+    # def is_going_to_state1(self, event):
+    #     if event.get("message"):
+    #         text = event['message']['text']
+    #         return text.lower() == 'go to state1'
+    #     return False
 
     def is_going_to_help(self, event):
         if event.get("message"):
@@ -26,11 +27,17 @@ class TocMachine(GraphMachine):
             return text.lower() == 'help'
         return False
 
-    def is_going_to_newRecord(self, event):
+    def is_going_to_fsm(self, event):
         if event.get("message"):
             text = event['message']['text']
-            return text.lower() == '開始記帳'
+            return text.lower() == 'fsm'
         return False
+
+    # def is_going_to_newRecord(self, event):
+    #     if event.get("message"):
+    #         text = event['message']['text']
+    #         return text.lower() == '開始記帳'
+    #     return False
 
     def is_going_to_getPhoto(self, event):
         if event.get("message"):
@@ -39,21 +46,21 @@ class TocMachine(GraphMachine):
         return False
 
     def is_going_to_photo1(self, event):
-        if event.get("message"):
-            text = event['message']['text']
-            return text.lower() == '照片1'
+        # if event.get("message"):
+        #     text = event['message']['text']
+        #     return text.lower() == '羽生結弦'
         if event.get("postback"):
             text = event['postback']['payload']
-            return text.lower() == '照片1'
+            return text.lower() == '羽生結弦'
         return False
 
     def is_going_to_photo2(self, event):
-        if event.get("message"):
-            text = event['message']['text']
-            return text.lower() == '照片2'
+        # if event.get("message"):
+        #     text = event['message']['text']
+        #     return text.lower() == '新垣结衣'
         if event.get("postback"):
             text = event['postback']['payload']
-            return text.lower() == '照片2'
+            return text.lower() == '新垣结衣'
         return False
 
     def is_going_to_getNews(self, event):
@@ -89,36 +96,46 @@ class TocMachine(GraphMachine):
             return text.lower() == '確認'
         return False
 
-    def on_enter_state1(self, event):
-        print("I'm entering state1")
+    # def on_enter_state1(self, event):
+    #     print("I'm entering state1")
 
-        sender_id = event['sender']['id']
-        responese = send_text_message(sender_id, "I'm entering state1")
-        self.go_back()
+    #     sender_id = event['sender']['id']
+    #     responese = send_text_message(sender_id, "I'm entering state1")
+    #     self.go_back()
 
-    def on_exit_state1(self):
-        print('Leaving state1')
+    # def on_exit_state1(self):
+    #     print('Leaving state1')
 
     def on_enter_help(self, event):
         print("I'm entering help")
 
         sender_id = event['sender']['id']
-        send_text_message(sender_id, "輸入 \"news\" 查看新聞\n輸入 \"FSM\" 查看FSM圖")
+        send_text_message(sender_id, "輸入 \"news\" 查看新聞\n輸入 \"FSM\" 查看FSM圖\n輸入 \"照片\" 查看隨機照片")
         self.go_back()
 
     def on_exit_help(self):
         print('Leaving help')
 
-    def on_enter_newRecord(self, event):
-        print("I'm entering newRecord")
+    def on_enter_fsm(self, event):
+        print("I'm entering fsm")
 
         sender_id = event['sender']['id']
-        responese = send_image_url(sender_id, "https://upload.wikimedia.org/wikipedia/commons/f/f8/Dcard_Favicon_x520.png")
-        # https://9.share.photo.xuite.net/wh_lydia/1960663/11444643/536779712_m.jpg
+        responese = send_image_url(sender_id, "https://raw.githubusercontent.com/IsabelTseng/TOC-Project-2019/master/fsm.png")
         self.go_back()
 
-    def on_exit_newRecord(self):
-        print('Leaving newRecord')
+    def on_exit_fsm(self):
+        print('Leaving fsm')
+
+    # def on_enter_newRecord(self, event):
+    #     print("I'm entering newRecord")
+
+    #     sender_id = event['sender']['id']
+    #     responese = send_image_url(sender_id, "https://upload.wikimedia.org/wikipedia/commons/f/f8/Dcard_Favicon_x520.png")
+    #     # https://9.share.photo.xuite.net/wh_lydia/1960663/11444643/536779712_m.jpg
+    #     self.go_back()
+
+    # def on_exit_newRecord(self):
+    #     print('Leaving newRecord')
 
     def on_enter_getPhoto(self, event):
         print("I'm entering getPhoto")
@@ -127,26 +144,30 @@ class TocMachine(GraphMachine):
         buttons = [
                     {
                         "type":"postback",
-                        "title":"照片1",
-                        "payload":"照片1"
+                        "title":"羽生結弦",
+                        "payload":"羽生結弦"
                     },
                     {
                         "type":"postback",
-                        "title":"照片2",
-                        "payload":"照片2"
+                        "title":"新垣结衣",
+                        "payload":"新垣结衣"
                     }
                 ]
         responese = send_button_message(sender_id, "選擇照片", buttons)
-        self.go_back()
 
-    def on_exit_getPhoto(self):
+    def on_exit_getPhoto(self, event):
         print('Leaving getPhoto')
 
     def on_enter_photo1(self, event):
         print("I'm entering photo1")
 
+        photos = [
+            "https://i1.kknews.cc/SIG=3bj0v8q/66n8000510n6r19ps0so.jpg",
+            "http://cms.exmoo.com/uploads/HNh4MndPk1x1p8Jrb7HF.jpg",
+            "https://i1.read01.com/SIG=26tgnje/30384573386a3033.jpg"
+        ]
         sender_id = event['sender']['id']
-        responese = send_image_url(sender_id, "https://pic3.zhimg.com/80/v2-919c284f057ab0f7c6e9a3bb1f131c12_hd.jpg")
+        responese = send_image_url(sender_id, photos[random.randint(0,len(photos)-1)])
         self.go_back()
 
     def on_exit_photo1(self):
@@ -155,8 +176,13 @@ class TocMachine(GraphMachine):
     def on_enter_photo2(self, event):
         print("I'm entering photo2")
 
+        photos = [
+            "https://pic2.zhimg.com/80/v2-7c1f928a45d6aef403e8b9f9361eca0e_qhd.jpg",
+            "https://wx2.sinaimg.cn/wap720/70396e5agy1fguxpp35rhj20zl0ku779.jpg",
+            "http://n.sinaimg.cn/transform/20150319/N4Ne-chmifpy0845535.jpg"
+        ]
         sender_id = event['sender']['id']
-        responese = send_image_url(sender_id, "https://wx3.sinaimg.cn/large/006VNNAsly1fqsluxiz9mj30ku0bpqhj.jpg")
+        responese = send_image_url(sender_id, photos[random.randint(0,len(photos)-1)])
         self.go_back()
 
     def on_exit_photo2(self):

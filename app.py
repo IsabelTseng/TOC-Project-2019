@@ -7,9 +7,10 @@ VERIFY_TOKEN = "1234567890987654321"
 machine = TocMachine(
     states=[
         'user',
-        'state1',
+        # 'state1',
         'help',
-        'newRecord',
+        'fsm',
+        # 'newRecord',
         'getPhoto',
         'photo1',
         'photo2',
@@ -20,12 +21,12 @@ machine = TocMachine(
         'news1Title'
     ],
     transitions=[
-        {
-            'trigger': 'advance',
-            'source': 'user',
-            'dest': 'state1',
-            'conditions': 'is_going_to_state1'
-        },
+        # {
+        #     'trigger': 'advance',
+        #     'source': 'user',
+        #     'dest': 'state1',
+        #     'conditions': 'is_going_to_state1'
+        # },
         {
             'trigger': 'advance',
             'source': 'user',
@@ -35,9 +36,15 @@ machine = TocMachine(
         {
             'trigger': 'advance',
             'source': 'user',
-            'dest': 'newRecord',
-            'conditions': 'is_going_to_newRecord'
+            'dest': 'fsm',
+            'conditions': 'is_going_to_fsm'
         },
+        # {
+        #     'trigger': 'advance',
+        #     'source': 'user',
+        #     'dest': 'newRecord',
+        #     'conditions': 'is_going_to_newRecord'
+        # },
         {
             'trigger': 'advance',
             'source': 'user',
@@ -89,16 +96,17 @@ machine = TocMachine(
         {
             'trigger': 'go_back',
             'source': [
-                'state1',
+                # 'state1',
                 'help',
-                'newRecord',
-                'getPhoto',
+                'fsm',
+                # 'newRecord',
+                # 'getPhoto',
                 'photo1',
                 'photo2',
-                'getNews',
-                'dcardPhoto',
+                # 'getNews',
+                # 'dcardPhoto',
                 'dcardTitle',
-                'news1Photo',
+                # 'news1Photo',
                 'news1Title'
             ],
             'dest': 'user'
